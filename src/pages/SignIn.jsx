@@ -1,12 +1,12 @@
 // src/pages/SignIn.jsx
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { signIn } from "../api/authApi";
 import eventImage from "../assets/signinImage.jpeg";
 import FloatingLabelInput from "../components/FloatingLabelInput";
 import AuthContext from "../contexts/AuthContext";
-import toast from 'react-hot-toast';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const SignIn = () => {
       toast.success(`Welcome: ${message}`);
     } catch (error) {
       setError(error.message);
-      toast.error(error.message)
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
