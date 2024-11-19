@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FloatingLabelInput from "../components/FloatingLabelInput";
 import eventImage from "../assets/signinImage.jpeg";
 import { forgotPassword } from '../api/authApi';
+import toast from 'react-hot-toast';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -15,9 +16,10 @@ const ForgotPassword = () => {
       setLoading(true);
       setError(null);
       const response = await forgotPassword(email);
-      alert(`Success: ${response.message}`);
+      toast.success(`Success: ${response.message}`);
     } catch (error) {
       setError(error.message);
+      toast.error(error.message)
     } finally {
       setLoading(false);
     }

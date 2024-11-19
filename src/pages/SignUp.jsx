@@ -5,6 +5,7 @@ import { signUp } from "../api/authApi";
 import eventImage from "../assets/signinImage.jpeg";
 import FloatingLabelInput from "../components/FloatingLabelInput";
 import AuthContext from "../contexts/AuthContext";
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
   const { setAuth } = useContext(AuthContext);
@@ -55,9 +56,10 @@ const SignUp = () => {
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
       navigate("/");
-      alert(`Success: ${response.message}`);
+      toast.success(`Success: ${response.message}`);
     } catch (error) {
       setError(error.message);
+      toast.error(error.message)
     } finally {
       setLoading(false);
     }
