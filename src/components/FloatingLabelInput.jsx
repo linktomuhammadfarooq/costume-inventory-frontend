@@ -16,6 +16,7 @@ const FloatingLabelInput = ({
         value={value}
         onChange={onChange}
         name={name}
+        autoComplete="name"
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         className={`
